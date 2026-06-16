@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scholé Solutions – Multi-sensory Structured Language Instruction, NZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --sky:        #45B8D8;
+      --sky-dark:   #1A3A4A;
+      --sky-light:  #EAF7FC;
+      --yellow:     #F5C842;
+      --green:      #6CC24A;
+      --coral:      #E84855;
+      --white:      #FFFFFF;
+      --off-white:  #F8FEFF;
+      --text:       #1A3A4A;
+      --muted:      #4A7080;
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --script:  'Dancing Script', cursive;
+      --body:    'DM Sans', system-ui, sans-serif;
+      --max-w: 1080px;
+      --section-pad: 5rem 1.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--off-white); color: var(--text); font-size: 1rem; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--sky); padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 12px rgba(69,184,216,.3); }
+    .nav-brand { font-family: var(--script); font-size: 1.6rem; color: var(--white); text-shadow: 0 1px 4px rgba(0,0,0,.15); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--white); font-size: .85rem; letter-spacing: .07em; text-transform: uppercase; font-weight: 500; opacity: .9; transition: opacity .2s; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta { background: var(--yellow) !important; color: var(--sky-dark) !important; padding: .45rem 1.2rem; border-radius: 20px; opacity: 1 !important; font-weight: 600; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 58px; right: 0; background: var(--sky); width: 100%; padding: 1rem 2rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* HERO */
+    .hero { background: var(--sky); color: var(--white); padding: 5.5rem 1.5rem 4.5rem; text-align: center; position: relative; overflow: hidden; }
+    /*
+      Equilateral triangle maths for 3 circles of diameter 88px:
+      Circle radius r = 44px. For a tight tripod, circles touch at centre.
+      Circumradius of the triangle formed by circle centres = r * (2/√3) ≈ 50.8px ≈ 51px.
+      Top circle (Visual):    centre at (0, -51px) from group centre
+      Bottom-left (Auditory): centre at (-44px, +25.5px)
+      Bottom-right (Kinesthetic): centre at (+44px, +25.5px)
+      Container height = 88 + 51 + 25.5 ≈ 165px, use 168px.
+      Group centre sits at top:84px, left:50%.
+    */
+    .hero-circles {
+      position: relative;
+      width: 200px;
+      height: 168px;
+      margin: 0 auto 2rem;
+    }
+    .circle {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      position: absolute;
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+      /* Translate by -50%,-50% so positioning is from circle centre */
+      transform: translate(-50%, -50%);
+    }
+    /* Top: Visual (yellow) — centre x=100px, y=44px */
+    .c-visual      { background: var(--yellow); color: var(--sky-dark);
+                     left: 100px; top: 44px; }
+    /* Bottom-left: Auditory (green) — centre x=56px, y=120px */
+    .c-auditory    { background: var(--green); color: #fff;
+                     left: 56px; top: 120px; }
+    /* Bottom-right: Kinesthetic (coral) — centre x=144px, y=120px */
+    .c-kinesthetic { background: var(--coral); color: #fff;
+                     left: 144px; top: 120px; }
+    .hero-eyebrow { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.8); margin-bottom: .8rem; }
+    .hero h1 { font-family: var(--script); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 600; line-height: 1.1; margin-bottom: .6rem; text-shadow: 0 2px 8px rgba(0,0,0,.12); }
+    .hero-tagline { font-family: var(--display); font-size: clamp(1rem, 2.5vw, 1.3rem); font-style: italic; opacity: .88; margin-bottom: .5rem; }
+    .hero-sub { font-size: 1rem; max-width: 580px; margin: 1rem auto 2.4rem; opacity: .85; line-height: 1.75; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: var(--sky-dark); text-decoration: none; padding: .85rem 2.2rem; font-size: .93rem; font-weight: 600; border-radius: 25px; transition: transform .15s, box-shadow .15s; box-shadow: 0 4px 16px rgba(245,200,66,.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,200,66,.5); }
+    .btn-ghost { display: inline-block; border: 2px solid rgba(255,255,255,.55); color: var(--white); text-decoration: none; padding: .83rem 2rem; font-size: .93rem; font-weight: 400; border-radius: 25px; margin-left: 1rem; transition: background .2s; }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+    /* INTRO STRIP */
+    .intro-strip { background: var(--sky-light); padding: 2.2rem 1.5rem; text-align: center; border-bottom: 3px solid var(--sky); }
+    .intro-strip p { max-width: 780px; margin: 0 auto; font-family: var(--display); font-size: 1.2rem; font-style: italic; color: var(--sky-dark); }
+
+    /* SECTIONS */
+    section { padding: var(--section-pad); }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { display: inline-block; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; margin-bottom: .8rem; padding: .2rem .75rem; border-radius: 12px; }
+    .label-yellow { background: var(--yellow); color: var(--sky-dark); }
+    .label-green  { background: var(--green);  color: #fff; }
+    .label-coral  { background: var(--coral);  color: #fff; }
+    .label-sky    { background: var(--sky);    color: #fff; }
+    h2 { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.25; color: var(--sky-dark); margin-bottom: 1rem; }
+    .lead { font-size: 1.02rem; color: var(--muted); max-width: 600px; margin-bottom: 2.5rem; }
+
+    /* SERVICES */
+    #services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; }
+    .service-card { background: var(--off-white); border-radius: 12px; padding: 2rem 1.8rem; border-top: 4px solid var(--sky); transition: transform .2s, box-shadow .2s; }
+    .service-card:nth-child(2) { border-top-color: var(--yellow); }
+    .service-card:nth-child(3) { border-top-color: var(--green); }
+    .service-card:nth-child(4) { border-top-color: var(--coral); }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(69,184,216,.15); }
+    .service-card .icon { font-size: 2rem; margin-bottom: .9rem; }
+    .service-card h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--sky-dark); margin-bottom: .5rem; }
+    .service-card p { font-size: .93rem; color: var(--muted); }
+
+    /* SENSORY PILLARS */
+    #pillars { background: var(--sky-light); }
+    .pillars-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; }
+    @media (max-width: 650px) { .pillars-row { grid-template-columns: 1fr; } }
+    .pillar { border-radius: 12px; padding: 2rem 1.6rem; text-align: center; }
+    .pillar-v { background: var(--yellow); color: var(--sky-dark); }
+    .pillar-a { background: var(--green); color: #fff; }
+    .pillar-k { background: var(--coral); color: #fff; }
+    .pillar .p-icon { font-size: 2.2rem; margin-bottom: .7rem; }
+    .pillar h3 { font-family: var(--display); font-size: 1.4rem; font-weight: 600; margin-bottom: .5rem; }
+    .pillar p { font-size: .91rem; opacity: .92; }
+
+    /* ASSESSMENTS */
+    #assessments { background: var(--sky); color: var(--white); }
+    #assessments h2 { color: var(--white); }
+    #assessments .lead { color: rgba(255,255,255,.88); }
+    .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    @media (max-width: 600px) { .assess-grid { grid-template-columns: 1fr; } }
+    .assess-item { background: var(--white); border-radius: 10px; padding: 1.5rem 1.6rem; border-top: 4px solid var(--yellow); }
+    .assess-item:nth-child(2) { border-top-color: var(--green); }
+    .assess-item:nth-child(3) { border-top-color: var(--coral); }
+    .assess-item:nth-child(4) { border-top-color: var(--yellow); }
+    .assess-item h4 { font-family: var(--display); font-size: 1.15rem; color: var(--sky-dark); margin-bottom: .4rem; }
+    .assess-item p { font-size: .9rem; color: var(--muted); }
+    .assess-badge { display: inline-block; margin-top: 2rem; background: var(--white); border-left: 4px solid var(--yellow); border-radius: 8px; padding: 1rem 1.5rem; font-size: .9rem; color: var(--sky-dark); }
+    .assess-badge strong { color: var(--sky-dark); }
+
+    /* WHY */
+    #why { background: var(--white); }
+    .why-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 700px) { .why-cols { grid-template-columns: 1fr; gap: 2rem; } }
+    .why-text p { font-size: .97rem; color: var(--muted); margin-bottom: 1rem; text-align: justify; }
+    .why-photo-wrap { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .why-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center 15%; border: 4px solid var(--sky); box-shadow: 0 4px 14px rgba(0,0,0,.12); flex-shrink: 0; }
+    @media (max-width: 480px) { .why-photo-wrap { flex-direction: column; text-align: center; } }
+    .credential-list { list-style: none; margin-top: 1.5rem; }
+    .credential-list li { font-size: .92rem; padding: .7rem 0 .7rem 1.4rem; border-bottom: 1px solid #c8e8f2; position: relative; color: var(--text); }
+    .credential-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .quote-block { background: var(--sky); color: var(--white); padding: 2.5rem 2rem; border-radius: 12px; position: relative; }
+    .quote-block::before { content: '"'; position: absolute; top: -.2rem; left: 1.2rem; font-family: var(--display); font-size: 6rem; color: rgba(255,255,255,.15); line-height: 1; }
+    .quote-block blockquote { font-family: var(--display); font-size: 1.25rem; font-style: italic; line-height: 1.65; opacity: .95; }
+    .quote-block cite { display: block; margin-top: 1.2rem; font-style: normal; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+
+    /* AGREEMENT */
+    #agreement { background: var(--sky-light); }
+    .agreement-box { background: var(--white); border: 1px solid #c8e8f2; border-top: 4px solid var(--sky); border-radius: 12px; padding: 2.5rem 2.2rem; max-width: 720px; }
+    .agreement-box p { font-size: .95rem; color: var(--muted); margin-bottom: 1rem; }
+    .agreement-box ul { margin: .8rem 0 1.5rem 1.2rem; color: var(--text); font-size: .93rem; }
+    .agreement-box ul li { margin-bottom: .4rem; }
+
+    /* CONTACT */
+    #contact { background: var(--sky); color: var(--white); text-align: center; }
+    #contact h2 { color: var(--white); }
+    #contact .lead { color: rgba(255,255,255,.8); margin: 0 auto 2rem; }
+    .contact-cards { display: flex; gap: 1.4rem; justify-content: center; flex-wrap: wrap; }
+    .contact-card { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 12px; padding: 1.8rem 2rem; min-width: 190px; transition: background .2s; }
+    .contact-card:hover { background: rgba(255,255,255,.22); }
+    .contact-card .ci { font-size: 1.8rem; margin-bottom: .6rem; }
+    .contact-card h4 { font-family: var(--display); font-size: 1rem; color: var(--yellow); margin-bottom: .3rem; }
+    .contact-card p { font-size: .88rem; opacity: .88; }
+    .contact-card a { color: var(--white); text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); }
+
+    /* FOOTER */
+    /* ── BOOKING SECTION ─────────────────────────────────────────── */
+    #booking { background: var(--sky-light); }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 700px) { .booking-grid { grid-template-columns: 1fr; } }
+    .booking-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      border-top: 4px solid var(--sky);
+      text-align: center;
+    }
+    .booking-card:nth-child(2) { border-top-color: var(--green); }
+    .booking-card .bk-icon { font-size: 2.4rem; margin-bottom: .8rem; }
+    .booking-card h3 { font-family: var(--display); font-size: 1.4rem; color: var(--sky-dark); margin-bottom: .6rem; }
+    .booking-card p { font-size: .92rem; color: var(--muted); margin-bottom: 1.4rem; line-height: 1.7; }
+    .btn-book {
+      display: inline-block;
+      background: var(--sky);
+      color: var(--white);
+      text-decoration: none;
+      padding: .8rem 1.8rem;
+      border-radius: 25px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: background .2s, transform .15s;
+    }
+    .btn-book:hover { background: #30a0be; transform: translateY(-2px); }
+    .btn-pay {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      text-decoration: none;
+      padding: .8rem 1.8rem;
+      border-radius: 25px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: background .2s, transform .15s;
+    }
+    .btn-pay:hover { background: #58a83b; transform: translateY(-2px); }
+
+    /* ── ENQUIRY FORM ────────────────────────────────────────────── */
+    #enquiry { background: var(--white); }
+    .form-wrap {
+      background: var(--sky-light);
+      border-radius: 16px;
+      padding: 2.5rem 2.4rem;
+      max-width: 780px;
+      border-top: 4px solid var(--sky);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.4rem;
+    }
+    @media (max-width: 620px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: .35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--sky-dark);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .75rem 1rem;
+      border: 2px solid #c8e8f2;
+      border-radius: 8px;
+      font-family: var(--body);
+      font-size: .95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--sky); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      margin-top: 1.4rem;
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+    }
+    .btn-submit {
+      background: var(--sky);
+      color: var(--white);
+      border: none;
+      padding: .9rem 2.4rem;
+      border-radius: 25px;
+      font-family: var(--body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-submit:hover { background: #30a0be; transform: translateY(-2px); }
+    .form-note { font-size: .82rem; color: var(--muted); }
+    .form-success {
+      display: none;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      margin-top: 1rem;
+      font-size: .93rem;
+    }
+
+    footer { background: var(--sky-dark); color: rgba(255,255,255,.55); text-align: center; padding: 2rem 1.5rem; font-size: .82rem; }
+    footer strong { color: var(--yellow); }
+
+    /* ── RESOURCES OVERLAY ───────────────────────────────────────── */
+    #resources-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(26,58,74,.55);
+      backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    #resources-overlay.active { display: flex; }
+
+    /* PASSWORD GATE */
+    .password-gate {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.8rem 2.4rem;
+      width: 100%; max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(26,58,74,.25);
+      position: relative;
+    }
+    .password-gate .gate-icon { font-size: 2.4rem; margin-bottom: .8rem; }
+    .password-gate h3 { font-family: var(--display); font-size: 1.8rem; color: var(--sky-dark); margin-bottom: .4rem; }
+    .password-gate p { font-size: .92rem; color: var(--muted); margin-bottom: 1.6rem; }
+    .gate-input {
+      width: 100%; padding: .8rem 1rem;
+      border: 2px solid #c8e8f2; border-radius: 8px;
+      font-family: var(--body); font-size: 1rem;
+      color: var(--text); outline: none;
+      transition: border-color .2s;
+      margin-bottom: .8rem;
+    }
+    .gate-input:focus { border-color: var(--sky); }
+    .gate-error { color: var(--coral); font-size: .85rem; margin-bottom: .8rem; min-height: 1.2rem; }
+    .gate-btn {
+      width: 100%; padding: .85rem;
+      background: var(--sky); color: var(--white);
+      border: none; border-radius: 25px;
+      font-family: var(--body); font-size: .95rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .gate-btn:hover { background: #30a0be; }
+    .gate-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      background: none; border: none; font-size: 1.4rem;
+      cursor: pointer; color: var(--muted); line-height: 1;
+    }
+    .gate-close:hover { color: var(--coral); }
+
+    /* RESOURCES PAGE */
+    .resources-page {
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%; max-width: 820px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(26,58,74,.25);
+      position: relative;
+    }
+    .resources-header {
+      background: var(--sky);
+      padding: 2rem 2.4rem 1.6rem;
+      border-radius: 16px 16px 0 0;
+      color: var(--white);
+    }
+    .resources-header h2 { color: var(--white); font-size: 2rem; margin-bottom: .3rem; }
+    .resources-header p { opacity: .88; font-size: .93rem; }
+    .resources-close {
+      position: absolute; top: 1rem; right: 1.4rem;
+      background: rgba(255,255,255,.2); border: none;
+      color: var(--white); font-size: 1.3rem;
+      width: 36px; height: 36px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .resources-close:hover { background: rgba(255,255,255,.35); }
+    .resources-body { padding: 2rem 2.4rem 2.4rem; }
+    .resources-category { margin-bottom: 2.2rem; }
+    .resources-category h4 {
+      font-family: var(--display); font-size: 1.2rem; font-weight: 600;
+      color: var(--sky-dark); margin-bottom: 1rem;
+      padding-bottom: .5rem; border-bottom: 2px solid var(--sky-light);
+    }
+    .resource-list { list-style: none; display: grid; gap: .7rem; }
+    .resource-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--off-white); border-radius: 10px;
+      padding: .9rem 1.2rem;
+      border-left: 4px solid var(--sky);
+      transition: transform .15s, box-shadow .15s;
+      text-decoration: none; color: var(--text);
+    }
+    .resource-item:nth-child(2) { border-left-color: var(--yellow); }
+    .resource-item:nth-child(3) { border-left-color: var(--green); }
+    .resource-item:nth-child(4) { border-left-color: var(--coral); }
+    .resource-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(69,184,216,.12); }
+    .resource-item .r-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .resource-item .r-info { flex: 1; }
+    .resource-item .r-title { font-weight: 500; font-size: .94rem; color: var(--sky-dark); }
+    .resource-item .r-desc  { font-size: .82rem; color: var(--muted); margin-top: .1rem; }
+    .resource-item .r-badge {
+      font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; padding: .2rem .6rem;
+      border-radius: 10px; background: var(--sky-light); color: var(--sky);
+    }
+    .resources-note {
+      background: var(--sky-light); border-radius: 10px;
+      padding: 1rem 1.4rem; font-size: .87rem; color: var(--muted);
+      border-left: 3px solid var(--sky); margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Scholé Solutions</div>
+  <button class="nav-toggle" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pillars">Our Approach</a></li>
+    <li><a href="#assessments">Assessments</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#enquiry">Enquire</a></li>
+    <li><a href="#" onclick="showResources(event)">Resources</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-circles">
+    <div class="circle c-visual">Visual</div>
+    <div class="circle c-auditory">Auditory</div>
+    <div class="circle c-kinesthetic">Kinesthetic</div>
+  </div>
+  <p class="hero-eyebrow">New Zealand · Evidence-Based</p>
+  <h1>Scholé Solutions</h1>
+  <p class="hero-tagline">Multi-sensory Structured Language Instruction</p>
+  <p class="hero-sub">A New Zealand–based specialist service providing structured literacy and maths support through evidence-based, multi-sensory interventions — for every kind of learner.</p>
+  <a href="#services" class="btn-ghost">Learn more</a>
+</header>
+
+<div class="intro-strip">
+  <h2 style="font-family:var(--display); font-style:italic; color:var(--sky-dark); font-size:clamp(.85rem, 3.6vw, 1.6rem); white-space:nowrap; max-width:100%; margin:0 auto 1.2rem;">Where the Science of Learning Meets the Space to Breathe.</h2>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">If your child is struggling with reading, writing, or maths, the school day can feel like a constant battleground. When a child is anxious, overwhelmed, or feeling left behind, their brain goes into survival mode— blocking their ability to learn.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">At Scholé Solutions, we replace academic panic with evidence-based purpose.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">Named after the classical Greek concept of Scholé—meaning restful, unhurried learning—we provide explicit, structured literacy and numeracy intervention in an environment designed to lower stress and build genuine confidence. We don't just teach; we quiet the cognitive anxiety that stands in your child's way, freeing their working memory to map new skills and achieve life-changing, confidence-boosting mastery.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto;">No more guesswork. No more tears. Just explicit, science-backed remediation in a space where your child feels safe to succeed.</p>
+</div>
+
+<section id="services">
+  <div class="container">
+    <span class="section-label label-sky">What we offer</span>
+    <h2>Specialist support services</h2>
+    <p class="lead">Tailored, one-on-one programmes using evidence-based, multi-sensory interventions for learners with literacy and numeracy challenges.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">📖</div>
+        <h3>Structured Literacy Support</h3>
+        <p>Systematic, synthetic phonics-grounded reading and writing support for learners with dyslexia or literacy difficulties, using multi-sensory techniques proven by research.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔢</div>
+        <h3>Multisensory Structured Maths Support</h3>
+        <p>Targeted maths intervention addressing foundational gaps, building number sense, and developing confidence — aligned with each learner's individual needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="container">
+    <span class="section-label label-sky">Our approach</span>
+    <h2>Learning through all the senses</h2>
+    <p class="lead">True multi-sensory instruction means engaging Visual, Auditory, and Kinesthetic pathways simultaneously — so learning sticks, no matter how the brain is wired.</p>
+    <div class="pillars-row">
+      <div class="pillar pillar-v">
+        <div class="p-icon">👁</div>
+        <h3>Visual</h3>
+        <p>Explicit visual scaffolds—including directional colour-coding, orthographic grids, and graphic organisers—anchor handwriting mechanics and expose the underlying structure of language and numeracy.</p>
+      </div>
+      <div class="pillar pillar-a">
+        <div class="p-icon">👂</div>
+        <h3>Auditory</h3>
+        <p>Learners build strong phonemic skills by hearing, speaking, and writing simultaneously. Saying letter sounds aloud while practising handwriting strokes provides the immediate feedback needed to lock in sound-to-symbol connections.</p>
+      </div>
+      <div class="pillar pillar-k">
+        <div class="p-icon">✋</div>
+        <h3>Kinesthetic</h3>
+        <p>Guided graphomotor practice and speech-production mechanics provide the vital haptic feedback needed to automate handwriting. This physical execution transforms abstract concepts into tangible, permanent mental models.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="assessments">
+  <div class="container">
+    <span class="section-label label-yellow">Formal assessments</span>
+    <h2>Comprehensive evaluation services</h2>
+    <p class="lead">Standardised assessments delivered by a qualified Level B assessor — giving families, schools, and learners clear answers and a path forward.</p>
+    <div class="assess-grid">
+      <div class="assess-item">
+        <h4>Dyslexia Evaluation</h4>
+        <p>In-depth assessment to identify dyslexia and related reading difficulties, including phonological processing, fluency, and comprehension.</p>
+      </div>
+      <div class="assess-item">
+        <h4>Neurodevelopmental Screening</h4>
+        <p>Early identification of neurodiverse profiles and screening for the additive impact of complex comorbidities on cognitive processing, learning, and well-being.</p>
+      </div>
+      <div class="assess-item">
+        <h4>SAC Assessment</h4>
+        <p>Special Assessment Conditions evaluations to document learning needs and support applications for exam accommodations in NCEA and tertiary settings.</p>
+      </div>
+      <div class="assess-item">
+        <h4>Educational Achievement</h4>
+        <p>Standardised assessment of literacy and numeracy achievement to identify gaps and inform targeted intervention planning.</p>
+      </div>
+      <div class="assess-item">
+        <h4>Written Report &amp; Recommendations</h4>
+        <p>Every assessment includes a full written report with findings, diagnosis where applicable, and practical recommendations for home and school.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="why-cols">
+      <div class="why-text">
+        <div class="why-photo-wrap">
+          <img src="eunice-photo.png" alt="Dr Eunice M. Fuchs, founder of Scholé Solutions" class="why-photo" loading="lazy">
+          <div>
+            <span class="section-label label-green">About Dr Eunice M. Fuchs</span>
+            <h2 style="margin:0;">Bridging Clinical Science, Educational Diagnostics, and Compassionate Remediation</h2>
+          </div>
+        </div>
+        <p>I am an experienced tertiary-level educator, learning analytics specialist, and formally trained diagnostician who brings a deeply evidence-informed, multidisciplinary approach to academic intervention. My professional journey bridges cognitive science, healthcare, and inclusive learning environments.</p>
+        <p>With 24 years of combined experience in clinical nursing and healthcare education, and 7 years of specialised expertise in Structured Literacy and educational diagnostics, I view each learner through a unique, holistic lens. My practice specialises in the early identification of neurodiverse profiles, neurodevelopmental screening, and the management of the additive impact of complex comorbidities on cognitive processing, learning, and well-being.</p>
+        <h3 style="margin-top:1.4rem;">A Personal Mission, A Professional Standard</h3>
+        <p>My path into literacy specialisation began in 2017 when my daughter was diagnosed with dyslexia. Driven to find the most efficacious, science-backed support for her, I pursued rigorous structured literacy training through the Institute for Multi-Sensory Structured Language Education (IMSLE) in Australia, achieving MSL Reading Interventionist accreditation and becoming an Associate Member of the Australian Dyslexia Association (AMADA) in 2019. Committed to clinical and pedagogical excellence, I earned formal certification from the International Dyslexia Association's Centre for Effective Reading Intervention (CERI) in 2023.</p>
+        <h3 style="margin-top:1.4rem;">Data-Driven Insights, Inclusive Classrooms</h3>
+        <p>As a Level B Registered Educational Assessor and a Cambridge-Approved Special Access Arrangements Assessor, my practice is deeply grounded in psychometric theory, data analytics, and the principles of the Science of Learning. I translate complex cognitive and achievement data into highly structured, actionable strategies. Whether working one-on-one with a student or helping schools build sustainable internal capabilities for school-wide cognitive profiling, my goal is the same: to remove barriers and implement targeted, high-impact learning interventions that stick.</p>
+        <h3 style="margin-top:1.4rem;">Professional Qualifications &amp; Accreditations</h3>
+        <ul class="credential-list">
+          <li>PhD-trained Registered Nurse (RN)</li>
+          <li>Associate Member of the Australian Dyslexia Association (AMADA)</li>
+          <li>CERI-Verified Structured Literacy Dyslexia Interventionist (C-SLDI)</li>
+          <li>Certified Dyslexia Interventionist (Recognised by the International Dyslexia Association)</li>
+          <li>Multi-Sensory Structured Language (MSL) Reading Interventionist (IMSLE)</li>
+          <li>Cambridge-Approved Special Access Arrangements Assessor &amp; Member of the Cambridge Assessment Network, Educational Assessor with Level B Registration</li>
+        </ul>
+      </div>
+      <div>
+        <div class="quote-block">
+          <blockquote>"Mastering reading requires explicit, systematic practice. My goal is to make that extension easy, effective, and stress-free for every family."</blockquote>
+          <cite>Eunice · Scholé Solutions</cite>
+        </div>
+        <div style="margin-top:1.2rem; background:var(--sky-light); border-radius:12px; padding:1.4rem 1.6rem; border-left:4px solid var(--green);">
+          <p style="font-size:.9rem; color:var(--muted); margin-bottom:.3rem;"><strong style="color:var(--sky-dark);">📧 Get in touch</strong></p>
+          <p style="font-size:.9rem; color:var(--muted);">scholesolutions@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY FORM -->
+<section id="enquiry">
+  <div class="container">
+    <span class="section-label label-yellow">New client enquiry</span>
+    <h2>Get in touch</h2>
+    <p class="lead">Fill in the form below and Eunice will be in touch within 1–2 business days to discuss your learner's needs.</p>
+    <div class="form-wrap">
+      <form id="enquiry-form" onsubmit="submitForm(event)">
+        <div class="form-grid">
+
+          <!-- Parent / Guardian -->
+          <div class="form-group">
+            <label for="parent-name">Parent / Guardian Name *</label>
+            <input type="text" id="parent-name" name="parent_name" placeholder="Full name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+64 21 000 0000" required />
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="Street, Suburb, City" />
+          </div>
+
+          <!-- Learner details -->
+          <div class="form-group">
+            <label for="learner-name">Learner's Full Name *</label>
+            <input type="text" id="learner-name" name="learner_name" placeholder="Child's full name" required />
+          </div>
+          <div class="form-group">
+            <label for="learner-dob">Learner's Date of Birth *</label>
+            <input type="date" id="learner-dob" name="learner_dob" required />
+          </div>
+          <div class="form-group">
+            <label for="learner-age">Learner's Age *</label>
+            <input type="number" id="learner-age" name="learner_age" placeholder="e.g. 9" min="3" max="25" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Type of Service Requested *</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Please select…</option>
+              <option value="literacy">Structured Literacy Tutoring</option>
+              <option value="numeracy">Numeracy Support</option>
+              <option value="dyslexia-assessment">Dyslexia &amp; Literacy Assessment</option>
+              <option value="sac">SAC Evaluation</option>
+              <option value="unsure">Not sure — I'd like guidance</option>
+            </select>
+          </div>
+
+          <!-- Additional info -->
+          <div class="form-group full">
+            <label for="notes">Additional Information</label>
+            <textarea id="notes" name="notes" placeholder="Tell us a little about your learner — any previous assessments, school year, specific concerns, or anything else you'd like Eunice to know."></textarea>
+          </div>
+
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Send Enquiry</button>
+          <span class="form-note">🔒 Your information is kept private and secure.</span>
+        </div>
+        <div class="form-success" id="form-success">
+          ✅ Thank you! Your enquiry has been sent. Eunice will be in touch within 1–2 business days.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label label-yellow">Contact</span>
+    <h2>Other ways to reach us</h2>
+    <p class="lead">Prefer to get in touch directly? Here's how to find us.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="ci">📧</div>
+        <h4>Email</h4>
+        <p><a href="mailto:scholesolutions@gmail.com">scholesolutions@gmail.com</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="ci">📍</div>
+        <h4>Location</h4>
+        <p>Whangarei, New Zealand<br>In-person &amp; online sessions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Scholé Solutions</strong> · New Zealand · Multi-sensory Structured Language Instruction</p>
+  <p style="margin-top:.5rem;">© 2025 Scholé Solutions. All rights reserved.</p>
+</footer>
+
+<!-- RESOURCES OVERLAY (password gate + resources page) -->
+<div id="resources-overlay" style="display:none">
+
+  <!-- PASSWORD GATE -->
+  <div class="password-gate" id="password-gate">
+    <button class="gate-close" onclick="closeResources()" aria-label="Close">✕</button>
+    <div class="gate-icon">🔒</div>
+    <h3>Resources</h3>
+    <p>This area is for Scholé Solutions students and parents.<br>Please enter the access password to continue.</p>
+    <input class="gate-input" id="password-input" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()"/>
+    <div class="gate-error" id="gate-error"></div>
+    <button class="gate-btn" onclick="checkPassword()">Access Resources</button>
+  </div>
+
+  <!-- RESOURCES PAGE -->
+  <div class="resources-page" id="resources-page" style="display:none">
+    <div class="resources-header">
+      <button class="resources-close" onclick="closeResources()" aria-label="Close">✕</button>
+      <span class="section-label label-yellow" style="margin-bottom:.6rem;">For students &amp; parents</span>
+      <h2>Home Practice Resources</h2>
+      <p>Structured literacy resources organised by UFLI Foundations lesson — bridging classroom learning to home practice.</p>
+    </div>
+    <div class="resources-body">
+
+      <!-- HOW IT WORKS -->
+      <div style="background:var(--sky-light); border-radius:10px; padding:1.4rem 1.6rem; margin-bottom:2rem; border-left:4px solid var(--sky);">
+        <strong style="color:var(--sky-dark); font-size:.95rem;">How it works:</strong>
+        <ol style="margin-top:.6rem; margin-left:1.2rem; font-size:.9rem; color:var(--muted); line-height:1.9;">
+          <li><strong>Find Your Lesson</strong> — look up the UFLI lesson number your child is currently working on.</li>
+          <li><strong>Access Resources</strong> — find the matching home practice sheets, decodable texts, and phonics games.</li>
+          <li><strong>Practice with Confidence</strong> — 5 to 10 minutes of daily practice is perfect!</li>
+        </ol>
+      </div>
+
+      <!-- LESSON 42 -->
+      <div class="resources-category">
+        <h4>📘 Lesson 42 — FLOSZ Rule</h4>
+        <div style="background:var(--sky-light); border-radius:8px; padding:1rem 1.2rem; margin-bottom:1rem; font-size:.88rem; color:var(--muted);">
+          <strong style="color:var(--sky-dark);">💡 Practice tip:</strong> Have your child read the word list, practise the heart words <em>your</em> and <em>want</em>, do the Word Work Chain (change one sound at a time), then read the two sentences aloud with finger tracking.
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/gc8nkxns914enc7d/?embed','_blank')" style="cursor:pointer">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Intermediate Word Work Mat</div>
+              <div class="r-desc">Hands-on word building mat for blending and segmenting practice</div>
+            </div>
+            <span class="r-badge">Open</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/pd7py49630t41lba/?embed&words=bell,bill,bliss,bluff,boss,brass,buff,buzz,class,cliff,cross,cuff,dill,doll,dress,dull,fell,fill,fizz,fluff,frill,fuss,fuzz,gill,glass,gloss,grass,grill,gruff,hill,hiss,huff,ill,jazz,kill,kiss,less,loss,mass,mess,mill,miss,moss,off,pass,pill,press,puff,quill,scuff,sell,skill,skull,smell,sniff,spell,spill,staff,stiff,still,stuff,swell,tell,toss,want,well,yell,your','_blank')" style="cursor:pointer">
+            <span class="r-icon">🎮</span>
+            <div class="r-info">
+              <div class="r-title">Games for UFLI Foundations — Lesson 42</div>
+              <div class="r-desc">Interactive word games: bell, bill, bliss, bluff, boss, brass… and more FLOSZ words</div>
+            </div>
+            <span class="r-badge">Play</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://drive.google.com/file/d/1a4cg1Og29iQgZjx2Au-v0FsdXt8tyJiz/view?usp=sharing','_blank')" style="cursor:pointer">
+            <span class="r-icon">📑</span>
+            <div class="r-info">
+              <div class="r-title">Decodable Text — 42 FLSZ (Australian English)</div>
+              <div class="r-desc">Click to open the decodable reading PDF for Lesson 42</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LESSON 43 -->
+      <div class="resources-category">
+        <h4>📘 Lesson 43 — Units -all, -oll, -ull</h4>
+        <ul class="resource-list">
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/gc8nkxns914enc7d/?embed','_blank')" style="cursor:pointer">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Intermediate Word Work Mat</div>
+              <div class="r-desc">Hands-on word building mat for blending and segmenting practice</div>
+            </div>
+            <span class="r-badge">Open</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/pd7py49630t41lba/?embed&words=ball,bull,call,fall,full,go,hall,mall,no,poll,pull,roll,small,so,stall,tall,toll,troll,wall','_blank')" style="cursor:pointer">
+            <span class="r-icon">🎮</span>
+            <div class="r-info">
+              <div class="r-title">Games for UFLI Foundations — Lesson 43</div>
+              <div class="r-desc">Interactive word games: ball, bull, call, fall, full, hall, mall, roll, tall, wall…</div>
+            </div>
+            <span class="r-badge">Play</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://drive.google.com/file/d/1hT564e7PAxAEt7nEMKqDl337f4siYSU3/view?usp=sharing','_blank')" style="cursor:pointer">
+            <span class="r-icon">📑</span>
+            <div class="r-info">
+              <div class="r-title">Decodable Text — 43 -all, -oll, -ull (Australian English)</div>
+              <div class="r-desc">Click to open the decodable reading PDF for Lesson 43</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LESSON 44 -->
+      <div class="resources-category">
+        <h4>📘 Lesson 44 — -ck</h4>
+        <ul class="resource-list">
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/gc8nkxns914enc7d/?embed','_blank')" style="cursor:pointer">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Intermediate Word Work Mat</div>
+              <div class="r-desc">Hands-on word building mat for blending and segmenting practice</div>
+            </div>
+            <span class="r-badge">Open</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/pd7py49630t41lba/?embed&words=back,black,block,brick,buck,clack,click,clock,cluck,crack,deck,dock,duck,fleck,flick,flock,frock,goes,hack,kick,lack,lick,lock,luck,mock,muck,neck,pack,peck,pick,pluck,puck,quack,quick,rack,rock,sack,says,sick,slack,slick,smack,smock,snack,sock,speck,stack,stick,stock,struck,stuck,suck,tack,tick,track,trick,truck,tuck,wick','_blank')" style="cursor:pointer">
+            <span class="r-icon">🎮</span>
+            <div class="r-info">
+              <div class="r-title">Games for UFLI Foundations — Lesson 44</div>
+              <div class="r-desc">Interactive word games: back, black, block, brick, buck, click, clock, duck, kick, rock…</div>
+            </div>
+            <span class="r-badge">Play</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://drive.google.com/file/d/1zjPU9Ao-EuitKAzzI3AphIc7nxZ6kDGA/view?usp=sharing','_blank')" style="cursor:pointer">
+            <span class="r-icon">📑</span>
+            <div class="r-info">
+              <div class="r-title">Decodable Text — 44 -ck</div>
+              <div class="r-desc">Click to open the decodable reading PDF for Lesson 44</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LESSON 45 -->
+      <div class="resources-category">
+        <h4>📘 Lesson 45 — -sh</h4>
+        <ul class="resource-list">
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/gc8nkxns914enc7d/?embed','_blank')" style="cursor:pointer">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Intermediate Word Work Mat</div>
+              <div class="r-desc">Hands-on word building mat for blending and segmenting practice</div>
+            </div>
+            <span class="r-badge">Open</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://research.dwi.ufl.edu/op.n/file/pd7py49630t41lba/?embed&words=ash,bash,blush,brush,cash,clash,crash,crush,dash,dish,fish,flash,fresh,gash,gush,hush,lash,lush,mash,mesh,rash,rush,shack,she,shed,shelf,shell,shift,shin,ship,shock,shop,shot,shut,slush,smash,stash,trash,we,wish','_blank')" style="cursor:pointer">
+            <span class="r-icon">🎮</span>
+            <div class="r-info">
+              <div class="r-title">Games for UFLI Foundations — Lesson 45</div>
+              <div class="r-desc">Interactive word games: ash, bash, blush, brush, crash, dish, fish, flash, rush, wish…</div>
+            </div>
+            <span class="r-badge">Play</span>
+          </li>
+          <li class="resource-item" onclick="window.open('https://drive.google.com/file/d/1HfXBFndbE3DmNBmnm9K6udu21jRUNy1g/view?usp=sharing','_blank')" style="cursor:pointer">
+            <span class="r-icon">📑</span>
+            <div class="r-info">
+              <div class="r-title">Decodable Text — 45 -sh</div>
+              <div class="r-desc">Click to open the decodable reading PDF for Lesson 45</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="resources-note">
+        💡 <strong>More lessons coming soon.</strong> Resources are added as your child progresses through UFLI Foundations. To share Google Drive links directly for the decodable PDFs, contact Eunice at <a href="mailto:scholesolutions@gmail.com" style="color:var(--sky);">scholesolutions@gmail.com</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const RESOURCES_PASSWORD = 'schole2025';
+
+  function showResources(e) {
+    if (e) e.preventDefault();
+    const overlay = document.getElementById('resources-overlay');
+    overlay.style.display = 'flex';
+    if (sessionStorage.getItem('scholeAuth') === 'true') {
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('resources-page').style.display = 'block';
+    } else {
+      document.getElementById('password-gate').style.display = 'block';
+      document.getElementById('resources-page').style.display = 'none';
+      document.getElementById('gate-error').textContent = '';
+      document.getElementById('password-input').value = '';
+      setTimeout(() => document.getElementById('password-input').focus(), 100);
+    }
+  }
+
+  function checkPassword() {
+    const val = document.getElementById('password-input').value;
+    if (val === RESOURCES_PASSWORD) {
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('resources-page').style.display = 'block';
+      sessionStorage.setItem('scholeAuth', 'true');
+    } else {
+      document.getElementById('gate-error').textContent = 'Incorrect password. Please try again.';
+      document.getElementById('password-input').value = '';
+      document.getElementById('password-input').focus();
+    }
+  }
+
+  function closeResources() {
+    document.getElementById('resources-overlay').style.display = 'none';
+  }
+
+  document.getElementById('resources-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeResources();
+  });
+
+  // ── ENQUIRY FORM ──────────────────────────────────────────────
+  function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('enquiry-form');
+    const success = document.getElementById('form-success');
+
+    // Build mailto with form data (works without a server)
+    const name    = document.getElementById('parent-name').value;
+    const email   = document.getElementById('email').value;
+    const phone   = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const lname   = document.getElementById('learner-name').value;
+    const dob     = document.getElementById('learner-dob').value;
+    const age     = document.getElementById('learner-age').value;
+    const service = document.getElementById('service').value;
+    const notes   = document.getElementById('notes').value;
+
+    const body = `New Enquiry from Scholé Solutions Website\n\n` +
+      `PARENT / GUARDIAN\n` +
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\n\n` +
+      `LEARNER\n` +
+      `Name: ${lname}\nDate of Birth: ${dob}\nAge: ${age}\nService Requested: ${service}\n\n` +
+      `ADDITIONAL INFORMATION\n${notes}`;
+
+    const mailtoLink = `mailto:scholesolutions@gmail.com` +
+      `?subject=${encodeURIComponent('New Client Enquiry — ' + lname)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    // Show success message
+    form.reset();
+    success.style.display = 'block';
+    setTimeout(() => success.style.display = 'none', 6000);
+  }
+</script>
+
+</body>
+</html>
+
+  <!-- PASSWORD GATE -->
+  <div class="password-gate" id="password-gate">
+    <button class="gate-close" onclick="closeResources()" aria-label="Close">✕</button>
+    <div class="gate-icon">🔒</div>
+    <h3>Resources</h3>
+    <p>This area is for Scholé Solutions students and parents.<br>Please enter the access password to continue.</p>
+    <input class="gate-input" id="password-input" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()"/>
+    <div class="gate-error" id="gate-error"></div>
+    <button class="gate-btn" onclick="checkPassword()">Access Resources</button>
+  </div>
+
+  <!-- RESOURCES PAGE (shown after correct password) -->
+  <div class="resources-page" id="resources-page" style="display:none">
+    <div class="resources-header">
+      <button class="resources-close" onclick="closeResources()" aria-label="Close">✕</button>
+      <span class="section-label label-yellow" style="margin-bottom:.6rem;">For students &amp; parents</span>
+      <h2>Learning Resources</h2>
+      <p>Download guides, worksheets, and materials to support learning at home.</p>
+    </div>
+    <div class="resources-body">
+
+      <div class="resources-category">
+        <h4>📖 Literacy Resources</h4>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Phonics Practice Sheets — Level 1</div>
+              <div class="r-desc">CVC words, short vowel sounds, beginner blending activities</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Phonics Practice Sheets — Level 2</div>
+              <div class="r-desc">Consonant blends, digraphs, and longer word patterns</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Reading Fluency Passages</div>
+              <div class="r-desc">Timed reading practice passages with comprehension questions</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Spelling Rules Reference Card</div>
+              <div class="r-desc">Key spelling rules and patterns for home reference</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="resources-category">
+        <h4>🔢 Numeracy Resources</h4>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Number Bonds Practice</div>
+              <div class="r-desc">Visual number bond activities to build addition fluency</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Times Tables Activity Sheets</div>
+              <div class="r-desc">Multi-sensory multiplication practice — colour, trace, and write</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+          <li class="resource-item">
+            <span class="r-icon">📄</span>
+            <div class="r-info">
+              <div class="r-title">Place Value Charts</div>
+              <div class="r-desc">Printable place value mats for hands-on number work</div>
+            </div>
+            <span class="r-badge">PDF</span>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- end resources-body -->
+  </div><!-- end resources-page -->
+</div><!-- end resources-overlay -->
+
+</body>
+</html>
