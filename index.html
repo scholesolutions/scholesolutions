@@ -147,7 +147,10 @@
     #why { background: var(--white); }
     .why-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     @media (max-width: 700px) { .why-cols { grid-template-columns: 1fr; gap: 2rem; } }
-    .why-text p { font-size: .97rem; color: var(--muted); margin-bottom: 1rem; }
+    .why-text p { font-size: .97rem; color: var(--muted); margin-bottom: 1rem; text-align: justify; }
+    .why-photo-wrap { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .why-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center 15%; border: 4px solid var(--sky); box-shadow: 0 4px 14px rgba(0,0,0,.12); flex-shrink: 0; }
+    @media (max-width: 480px) { .why-photo-wrap { flex-direction: column; text-align: center; } }
     .credential-list { list-style: none; margin-top: 1.5rem; }
     .credential-list li { font-size: .92rem; padding: .7rem 0 .7rem 1.4rem; border-bottom: 1px solid #c8e8f2; position: relative; color: var(--text); }
     .credential-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
@@ -415,7 +418,6 @@
     <li><a href="#pillars">Our Approach</a></li>
     <li><a href="#assessments">Assessments</a></li>
     <li><a href="#why">About</a></li>
-    <li><a href="https://calendar.app.google/tgGGzzwZU75Rejhx8" target="_blank">Book</a></li>
     <li><a href="#enquiry">Enquire</a></li>
     <li><a href="#" onclick="showResources(event)">Resources</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -431,13 +433,16 @@
   <p class="hero-eyebrow">New Zealand · Evidence-Based</p>
   <h1>Scholé Solutions</h1>
   <p class="hero-tagline">Multi-sensory Structured Language Instruction</p>
-  <p class="hero-sub">A New Zealand–based specialist service providing structured literacy and numeracy support through evidence-based, multi-sensory interventions — for every kind of learner.</p>
-  <a href="https://calendar.app.google/tgGGzzwZU75Rejhx8" target="_blank" class="btn-primary">Book a session</a>
+  <p class="hero-sub">A New Zealand–based specialist service providing structured literacy and maths support through evidence-based, multi-sensory interventions — for every kind of learner.</p>
   <a href="#services" class="btn-ghost">Learn more</a>
 </header>
 
 <div class="intro-strip">
-  <p>"Scholé" — from the ancient Greek for leisure and learning — reflects our belief that every learner deserves the time and tools to truly flourish.</p>
+  <h2 style="font-family:var(--display); font-style:italic; color:var(--sky-dark); font-size:clamp(.85rem, 3.6vw, 1.6rem); white-space:nowrap; max-width:100%; margin:0 auto 1.2rem;">Where the Science of Learning Meets the Space to Breathe.</h2>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">If your child is struggling with reading, writing, or maths, the school day can feel like a constant battleground. When a child is anxious, overwhelmed, or feeling left behind, their brain goes into survival mode— blocking their ability to learn.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">At Scholé Solutions, we replace academic panic with evidence-based purpose.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto 1rem;">Named after the classical Greek concept of Scholé—meaning restful, unhurried learning—we provide explicit, structured literacy and numeracy intervention in an environment designed to lower stress and build genuine confidence. We don't just teach; we quiet the cognitive anxiety that stands in your child's way, freeing their working memory to map new skills and achieve life-changing, confidence-boosting mastery.</p>
+  <p style="font-style:normal; font-size:1rem; text-align:left; max-width:780px; margin:0 auto;">No more guesswork. No more tears. Just explicit, science-backed remediation in a space where your child feels safe to succeed.</p>
 </div>
 
 <section id="services">
@@ -448,12 +453,12 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="icon">📖</div>
-        <h3>Structured Literacy Tutoring</h3>
-        <p>Systematic, phonics-grounded reading and writing support for learners with dyslexia or literacy difficulties, using multi-sensory techniques proven by research.</p>
+        <h3>Structured Literacy Support</h3>
+        <p>Systematic, synthetic phonics-grounded reading and writing support for learners with dyslexia or literacy difficulties, using multi-sensory techniques proven by research.</p>
       </div>
       <div class="service-card">
         <div class="icon">🔢</div>
-        <h3>Numeracy Support</h3>
+        <h3>Multisensory Structured Maths Support</h3>
         <p>Targeted maths intervention addressing foundational gaps, building number sense, and developing confidence — aligned with each learner's individual needs.</p>
       </div>
       <div class="service-card">
@@ -479,17 +484,17 @@
       <div class="pillar pillar-v">
         <div class="p-icon">👁</div>
         <h3>Visual</h3>
-        <p>Colour coding, visual patterns, and graphic tools help learners see the structure of language and numbers clearly.</p>
+        <p>Explicit visual scaffolds—including directional colour-coding, orthographic grids, and graphic organisers—anchor handwriting mechanics and expose the underlying structure of language and numeracy.</p>
       </div>
       <div class="pillar pillar-a">
         <div class="p-icon">👂</div>
         <h3>Auditory</h3>
-        <p>Phonological awareness, rhythm, and verbal repetition build strong sound-to-symbol connections at every stage.</p>
+        <p>Learners build strong phonemic skills by hearing, speaking, and writing simultaneously. Saying letter sounds aloud while practising handwriting strokes provides the immediate feedback needed to lock in sound-to-symbol connections.</p>
       </div>
       <div class="pillar pillar-k">
         <div class="p-icon">✋</div>
         <h3>Kinesthetic</h3>
-        <p>Hands-on activities, movement, and tactile materials make abstract concepts concrete and memorable.</p>
+        <p>Guided graphomotor practice and speech-production mechanics provide the vital haptic feedback needed to automate handwriting. This physical execution transforms abstract concepts into tangible, permanent mental models.</p>
       </div>
     </div>
   </div>
@@ -506,6 +511,10 @@
         <p>In-depth assessment to identify dyslexia and related reading difficulties, including phonological processing, fluency, and comprehension.</p>
       </div>
       <div class="assess-item">
+        <h4>Neurodevelopmental Screening</h4>
+        <p>Early identification of neurodiverse profiles and screening for the additive impact of complex comorbidities on cognitive processing, learning, and well-being.</p>
+      </div>
+      <div class="assess-item">
         <h4>SAC Assessment</h4>
         <p>Special Assessment Conditions evaluations to document learning needs and support applications for exam accommodations in NCEA and tertiary settings.</p>
       </div>
@@ -518,7 +527,6 @@
         <p>Every assessment includes a full written report with findings, diagnosis where applicable, and practical recommendations for home and school.</p>
       </div>
     </div>
-    <div class="assess-badge">Registered <strong>Level B Assessor</strong> — Pearson Clinical Australia &amp; NZCER</div>
   </div>
 </section>
 
@@ -526,17 +534,27 @@
   <div class="container">
     <div class="why-cols">
       <div class="why-text">
-        <span class="section-label label-green">Meet your interventionist</span>
-        <h2>Hi, I'm Eunice.</h2>
-        <p>I'm a dedicated Multi-Sensory Structured Literacy (MSL) interventionist and an Accredited Member of the Australian Dyslexia Association (AMADA), and I am recognised by the International Dyslexia Association (IDA) as a certified dyslexia interventionist.</p>
-        <p>My journey in literacy specialisation began in 2017 when my daughter was diagnosed with dyslexia. Driven to support her, I pursued structured literacy training through the Institute for Multi-Sensory Structured Language Education (IMSLE) in Australia and achieved MSL reading interventionist accreditation in 2019. By 2023, I had furthered my credentials by earning certification from the International Dyslexia Association Centre for Effective Reading Intervention (CERI).</p>
+        <div class="why-photo-wrap">
+          <img src="eunice-photo.png" alt="Dr Eunice M. Fuchs, founder of Scholé Solutions" class="why-photo" loading="lazy">
+          <div>
+            <span class="section-label label-green">About Dr Eunice M. Fuchs</span>
+            <h2 style="margin:0;">Bridging Clinical Science, Educational Diagnostics, and Compassionate Remediation</h2>
+          </div>
+        </div>
+        <p>I am an experienced tertiary-level educator, learning analytics specialist, and formally trained diagnostician who brings a deeply evidence-informed, multidisciplinary approach to academic intervention. My professional journey bridges cognitive science, healthcare, and inclusive learning environments.</p>
+        <p>With 24 years of combined experience in clinical nursing and healthcare education, and 7 years of specialised expertise in Structured Literacy and educational diagnostics, I view each learner through a unique, holistic lens. My practice specialises in the early identification of neurodiverse profiles, neurodevelopmental screening, and the management of the additive impact of complex comorbidities on cognitive processing, learning, and well-being.</p>
+        <h3 style="margin-top:1.4rem;">A Personal Mission, A Professional Standard</h3>
+        <p>My path into literacy specialisation began in 2017 when my daughter was diagnosed with dyslexia. Driven to find the most efficacious, science-backed support for her, I pursued rigorous structured literacy training through the Institute for Multi-Sensory Structured Language Education (IMSLE) in Australia, achieving MSL Reading Interventionist accreditation and becoming an Associate Member of the Australian Dyslexia Association (AMADA) in 2019. Committed to clinical and pedagogical excellence, I earned formal certification from the International Dyslexia Association's Centre for Effective Reading Intervention (CERI) in 2023.</p>
+        <h3 style="margin-top:1.4rem;">Data-Driven Insights, Inclusive Classrooms</h3>
+        <p>As a Level B Registered Educational Assessor and a Cambridge-Approved Special Access Arrangements Assessor, my practice is deeply grounded in psychometric theory, data analytics, and the principles of the Science of Learning. I translate complex cognitive and achievement data into highly structured, actionable strategies. Whether working one-on-one with a student or helping schools build sustainable internal capabilities for school-wide cognitive profiling, my goal is the same: to remove barriers and implement targeted, high-impact learning interventions that stick.</p>
+        <h3 style="margin-top:1.4rem;">Professional Qualifications &amp; Accreditations</h3>
         <ul class="credential-list">
-          <li>Accredited Member — Australian Dyslexia Association (AMADA)</li>
-          <li>Certified Dyslexia Interventionist — International Dyslexia Association (IDA)</li>
-          <li>MSL Reading Interventionist — IMSLE Australia (2019)</li>
-          <li>IDA Centre for Effective Reading Intervention — CERI (2023)</li>
-          <li>Level B Assessor — Pearson Clinical Australia &amp; NZCER</li>
-          <li>In-person and online sessions available across New Zealand</li>
+          <li>PhD-trained Registered Nurse (RN)</li>
+          <li>Associate Member of the Australian Dyslexia Association (AMADA)</li>
+          <li>CERI-Verified Structured Literacy Dyslexia Interventionist (C-SLDI)</li>
+          <li>Certified Dyslexia Interventionist (Recognised by the International Dyslexia Association)</li>
+          <li>Multi-Sensory Structured Language (MSL) Reading Interventionist (IMSLE)</li>
+          <li>Cambridge-Approved Special Access Arrangements Assessor &amp; Member of the Cambridge Assessment Network, Educational Assessor with Level B Registration</li>
         </ul>
       </div>
       <div>
@@ -549,54 +567,6 @@
           <p style="font-size:.9rem; color:var(--muted);">scholesolutions@gmail.com</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="agreement">
-  <div class="container">
-    <span class="section-label label-sky">Working together</span>
-    <h2>Tutoring Agreement</h2>
-    <p class="lead">A clear agreement sets the foundation for a strong, trusting learning partnership.</p>
-    <div class="agreement-box">
-      <p>Before sessions begin, every client receives a Tutoring Agreement outlining the responsibilities of both tutor and learner/family. This ensures clarity and trust from the very first session.</p>
-      <p>The agreement covers:</p>
-      <ul>
-        <li>Scheduling and session frequency</li>
-        <li>Communication channels and response times</li>
-        <li>Payment terms and preferred methods</li>
-        <li>Cancellation and rescheduling policy</li>
-        <li>Progress reporting and review periods</li>
-      </ul>
-      <p>Get in touch to receive your copy of the agreement and discuss how we can best support your learner.</p>
-      <a href="#contact" class="btn-primary" style="font-size:.88rem;padding:.7rem 1.8rem;display:inline-block;margin-top:.5rem;">Request the agreement</a>
-    </div>
-  </div>
-</section>
-
-<!-- BOOKING & PAYMENT -->
-<section id="booking">
-  <div class="container">
-    <span class="section-label label-sky">Appointments &amp; Payments</span>
-    <h2>Book a session or pay an invoice</h2>
-    <p class="lead">Easily schedule your next session online or pay your Xero invoice securely with one click.</p>
-    <div class="booking-grid">
-
-      <div class="booking-card">
-        <div class="bk-icon">🗓️</div>
-        <h3>Book a Session</h3>
-        <p>Check Eunice's availability and book your appointment directly through Google Calendar. Pick a date and time that works for you — confirmation is instant.</p>
-        <a href="https://calendar.app.google/tgGGzzwZU75Rejhx8" target="_blank" class="btn-book">View Available Times</a>
-      </div>
-
-      <div class="booking-card">
-        <div class="bk-icon">💳</div>
-        <h3>Pay Your Invoice</h3>
-        <p>Received a Xero invoice from Scholé Solutions? Click below to pay securely online via credit card or bank transfer — quick, safe, and hassle-free.</p>
-        <!-- Replace the href below with your Xero payment portal link -->
-        <a href="YOUR_XERO_PAYMENT_LINK" target="_blank" class="btn-pay">Pay Invoice via Xero</a>
-      </div>
-
     </div>
   </div>
 </section>
@@ -688,12 +658,7 @@
       <div class="contact-card">
         <div class="ci">📍</div>
         <h4>Location</h4>
-        <p>Based in New Zealand<br>In-person &amp; online sessions</p>
-      </div>
-      <div class="contact-card">
-        <div class="ci">🗓️</div>
-        <h4>TutorBird Portal</h4>
-        <p><a href="https://scholesolutions.tutorbird.com" target="_blank">Existing clients log in here</a></p>
+        <p>Whangarei, New Zealand<br>In-person &amp; online sessions</p>
       </div>
     </div>
   </div>
